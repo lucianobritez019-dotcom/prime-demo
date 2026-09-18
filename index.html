@@ -100,6 +100,7 @@ section.block{padding:74px 0}
 .treat .meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:.84rem;margin-top:2px}
 .treat .dur{display:inline-flex;align-items:center;gap:.4em;font-weight:600;color:var(--gold-deep)}
 .treat .price{margin-left:auto;font-weight:700;color:var(--ink)}
+.treat .pnote{font-size:.77rem;color:var(--muted);border-top:1px dashed var(--line);margin-top:8px;padding-top:8px;line-height:1.45}
 
 .pro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 @media(max-width:900px){.pro-grid{grid-template-columns:repeat(2,1fr)}}
@@ -380,20 +381,25 @@ const DEFAULTS={
     { id:"p3", name:"Carla Benítez", role:"Esteticista", categories:["estetica","facial"], specialties:["Estética corporal","Facial"], bio:"Tratamientos estéticos corporales y faciales no invasivos, con resultados visibles." }
   ],
   treatments:[
-    { id:"fis1", category:"fisioterapia", name:"Fisioterapia traumatológica", desc:"Tratamiento y recuperación de lesiones músculo-esqueléticas.", duration:45, price:"" },
-    { id:"fis2", category:"fisioterapia", name:"Fisioterapia deportiva", desc:"Prevención, tratamiento y rehabilitación de lesiones deportivas.", duration:45, price:"" },
-    { id:"fis3", category:"fisioterapia", name:"Fisioterapia geriátrica", desc:"Mejoramos la movilidad, funcionalidad e independencia del adulto mayor.", duration:45, price:"" },
-    { id:"fis4", category:"fisioterapia", name:"Recovery (recuperación muscular)", desc:"Técnicas y herramientas para acelerar tu recuperación y rendimiento.", duration:30, price:"" },
-    { id:"fis5", category:"fisioterapia", name:"Terapia de ondas de choque", desc:"Alivio del dolor y regeneración de tejidos de forma efectiva y segura.", duration:30, price:"" },
-    { id:"fis6", category:"fisioterapia", name:"Presoterapia", desc:"Drenaje, activación circulatoria y recuperación avanzada.", duration:45, price:"" },
-    { id:"mas1", category:"masajes", name:"Masaje relajante", desc:"Disminuye el estrés, relaja la mente y mejora la calidad del sueño.", duration:60, price:"" },
-    { id:"mas2", category:"masajes", name:"Masaje descontracturante", desc:"Alivia contracturas y tensiones. Ideal para espalda, cuello y hombros.", duration:60, price:"" },
-    { id:"mas3", category:"masajes", name:"Piedras calientes", desc:"El calor de las piedras favorece la relajación profunda y mejora la circulación.", duration:60, price:"" },
-    { id:"mas4", category:"masajes", name:"Aceites calientes", desc:"Nutre la piel y relaja los músculos con aceites esenciales tibios.", duration:60, price:"" },
-    { id:"est1", category:"estetica", name:"Maderoterapia", desc:"Moldea, tonifica y reduce la celulitis. Activa la circulación de forma natural.", duration:60, price:"" },
-    { id:"est2", category:"estetica", name:"Masajes reductores", desc:"Ayudan a reducir medidas, mejorar la firmeza y eliminar toxinas.", duration:60, price:"" },
-    { id:"est3", category:"estetica", name:"Drenaje linfático", desc:"Elimina líquidos y toxinas, reduce la hinchazón y mejora la circulación.", duration:60, price:"" },
-    { id:"est4", category:"estetica", name:"Aparatología estética", desc:"Tecnología avanzada: lipoláser, ultracavitación, vacum y radiofrecuencia.", duration:45, price:"" },
+    { id:"fis1", category:"fisioterapia", name:"Fisioterapia traumatológica", desc:"Tratamiento y recuperación de lesiones músculo-esqueléticas.", duration:45, price:"Gs. 130.000 / sesión", priceNote:"Paquetes: 5 ses. Gs. 600.000 · 10 ses. Gs. 1.000.000 · 15 ses. Gs. 1.300.000 · 20 ses. Gs. 1.700.000" },
+    { id:"fis2", category:"fisioterapia", name:"Fisioterapia deportiva", desc:"Prevención, tratamiento y rehabilitación de lesiones deportivas.", duration:45, price:"Gs. 130.000 / sesión", priceNote:"Paquetes: 5 ses. Gs. 600.000 · 10 ses. Gs. 1.000.000 · 15 ses. Gs. 1.300.000 · 20 ses. Gs. 1.700.000" },
+    { id:"fis3", category:"fisioterapia", name:"Fisioterapia geriátrica", desc:"Mejoramos la movilidad, funcionalidad e independencia del adulto mayor.", duration:45, price:"Gs. 130.000 / sesión", priceNote:"Paquetes: 5 ses. Gs. 600.000 · 10 ses. Gs. 1.000.000 · 15 ses. Gs. 1.300.000 · 20 ses. Gs. 1.700.000" },
+    { id:"fis4", category:"fisioterapia", name:"Recovery (recuperación muscular)", desc:"Técnicas y herramientas para acelerar tu recuperación y rendimiento.", duration:60, price:"Gs. 150.000 / sesión (60 min)", priceNote:"90 min Gs. 200.000 · Packs: 4 ses. desde Gs. 540.000 · 8 ses. desde Gs. 1.000.000" },
+    { id:"fis5", category:"fisioterapia", name:"Terapia de ondas de choque", desc:"Alivio del dolor y regeneración de tejidos de forma efectiva y segura.", duration:30, price:"Gs. 350.000 / sesión", priceNote:"Pack 4 sesiones Gs. 1.200.000" },
+    { id:"fis6", category:"fisioterapia", name:"Presoterapia", desc:"Drenaje, activación circulatoria y recuperación avanzada.", duration:30, price:"Gs. 80.000 / sesión (30 min)", priceNote:"40 min Gs. 100.000 · Packs: 4 ses. desde Gs. 280.000 · 8 ses. desde Gs. 520.000" },
+    { id:"mas1", category:"masajes", name:"Masaje relajante", desc:"Disminuye el estrés, relaja la mente y mejora la calidad del sueño.", duration:60, price:"Gs. 200.000 (1 h)", priceNote:"30 min Gs. 120.000 · 2 h Gs. 390.000 · Packs: 4 ses. Gs. 760.000 · 8 ses. Gs. 1.440.000" },
+    { id:"mas2", category:"masajes", name:"Masaje descontracturante", desc:"Alivia contracturas y tensiones. Ideal para espalda, cuello y hombros.", duration:60, price:"Gs. 250.000 (1 h)", priceNote:"30 min Gs. 150.000 · 2 h Gs. 450.000 · Packs: 4 ses. Gs. 960.000 · 8 ses. Gs. 1.800.000" },
+    { id:"mas3", category:"masajes", name:"Piedras calientes", desc:"El calor de las piedras favorece la relajación profunda y mejora la circulación.", duration:45, price:"Gs. 150.000" },
+    { id:"mas4", category:"masajes", name:"Aceites calientes", desc:"Nutre la piel y relaja los músculos con aceites esenciales tibios.", duration:60, price:"Gs. 250.000" },
+    { id:"est1", category:"estetica", name:"Maderoterapia", desc:"Moldea, tonifica y reduce la celulitis. Activa la circulación de forma natural.", duration:60, price:"Gs. 120.000 / sesión" },
+    { id:"est2", category:"estetica", name:"Masajes reductores", desc:"Ayudan a reducir medidas, mejorar la firmeza y eliminar toxinas.", duration:60, price:"Gs. 150.000 / sesión" },
+    { id:"est3", category:"estetica", name:"Drenaje linfático", desc:"Elimina líquidos y toxinas, reduce la hinchazón y mejora la circulación.", duration:60, price:"Gs. 180.000 (piernas)", priceNote:"Cuerpo completo Gs. 230.000" },
+    { id:"est5", category:"estetica", name:"Lipoláser", desc:"Favorece la reducción de grasa localizada y mejora la apariencia de la piel.", duration:45, price:"Gs. 100.000 / sesión" },
+    { id:"est6", category:"estetica", name:"Ultracavitación", desc:"Tecnología no invasiva que ayuda a movilizar la grasa localizada.", duration:45, price:"Gs. 120.000 / sesión" },
+    { id:"est7", category:"estetica", name:"Vacum", desc:"Estimula la circulación, ayuda a reducir la celulitis y mejora la tonicidad de la piel.", duration:45, price:"Gs. 100.000 / sesión" },
+    { id:"est8", category:"estetica", name:"Radiofrecuencia", desc:"Reafirma la piel, estimula la producción de colágeno y mejora su elasticidad.", duration:45, price:"Gs. 120.000 / sesión" },
+    { id:"est9", category:"estetica", name:"Plan Reductor PRIME", desc:"Maderoterapia + masaje reductor + lipoláser en una misma sesión.", duration:60, price:"Gs. 280.000 / sesión", priceNote:"Pack 4 ses. Gs. 1.000.000 · Pack 6 ses. Gs. 1.440.000" },
+    { id:"est10", category:"estetica", name:"Combinaciones reductoras", desc:"Combiná dos tratamientos en una misma sesión.", duration:60, price:"Desde Gs. 200.000", priceNote:"Reductor+Lipoláser o Madero+Lipoláser: Gs. 200.000 · Madero+Drenaje, Reductor+Drenaje o Drenaje+Lipoláser: Gs. 280.000" },
     { id:"fac1", category:"facial", name:"Limpieza facial profunda", desc:"Limpieza profunda para renovar y revitalizar tu piel.", duration:60, price:"" },
     { id:"fac2", category:"facial", name:"Limpieza facial express", desc:"Limpieza rápida para mantener tu piel sana en poco tiempo.", duration:30, price:"" }
   ]
@@ -519,7 +525,7 @@ function renderServices(){ const wrap=$("#servicesWrap"); if(!wrap) return;
   wrap.innerHTML=CATEGORIES.map(cat=>{ const items=S.treatments.filter(t=>t.category===cat.key); if(!items.length) return "";
     return `<div class="cat"><div class="cat-head"><span class="cic">${catIcon(cat.key)}</span><h3>${esc(cat.label)}</h3><span class="rule"></span></div>
       <div class="treat-grid">${items.map(t=>`<article class="treat"><h4>${esc(t.name)}</h4><p>${esc(t.desc||"")}</p>
-        <div class="meta"><span class="dur">${clockIcon()} ${esc(t.duration||45)} min</span>${t.price?`<span class="price">${esc(t.price)}</span>`:""}</div></article>`).join("")}</div></div>`; }).join("");
+        <div class="meta"><span class="dur">${clockIcon()} ${esc(t.duration||45)} min</span>${t.price?`<span class="price">${esc(t.price)}</span>`:""}</div>${t.priceNote?`<div class="pnote">${esc(t.priceNote)}</div>`:""}</article>`).join("")}</div></div>`; }).join("");
 }
 function renderProfessionals(){ const g=$("#proGrid"); if(!g) return;
   g.innerHTML=S.professionals.map(p=>`<article class="pro"><div class="top">
@@ -769,18 +775,19 @@ function adminTreats(){ return `<div style="display:flex;justify-content:flex-en
 function wireTreats(){ $("#trAdd").onclick=()=>treatDialog(null);
   $$("[data-edit]").forEach(b=>b.onclick=()=>treatDialog(treatById(b.dataset.edit)));
   $$("[data-del]").forEach(b=>b.onclick=()=>{ const t=treatById(b.dataset.del); confirmDialog(`¿Eliminar "${t.name}"?`, async()=>{ await delDoc("treatments",t.id); afterMutation(); toast("Eliminado."); }); }); }
-function treatDialog(t){ const isNew=!t; t=t||{id:uid(),category:"fisioterapia",name:"",desc:"",duration:45,price:""};
+function treatDialog(t){ const isNew=!t; t=t||{id:uid(),category:"fisioterapia",name:"",desc:"",duration:45,price:"",priceNote:""};
   openModal(`<div class="modal-head"><h3>${isNew?"Nuevo":"Editar"} servicio</h3>
       <button class="icon-btn" id="tdClose"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
     <div class="modal-body"><div class="field"><label>Área</label><select id="tfCat">${CATEGORIES.map(c=>`<option value="${c.key}" ${t.category===c.key?"selected":""}>${esc(c.label)}</option>`).join("")}</select></div>
       <div class="field"><label>Nombre</label><input id="tfName" value="${esc(t.name)}"></div>
       <div class="field"><label>Descripción</label><textarea id="tfDesc">${esc(t.desc||"")}</textarea></div>
       <div class="field" style="display:flex;gap:12px"><div style="flex:1"><label>Duración (min)</label><input id="tfDur" type="number" min="10" step="5" value="${esc(t.duration||45)}"></div>
-        <div style="flex:1"><label>Precio (opcional)</label><input id="tfPrice" value="${esc(t.price||"")}" placeholder="Gs. 150.000"></div></div></div>
+        <div style="flex:1"><label>Precio (opcional)</label><input id="tfPrice" value="${esc(t.price||"")}" placeholder="Gs. 150.000"></div></div>
+      <div class="field"><label>Nota de precios / paquetes (opcional)</label><input id="tfNote" value="${esc(t.priceNote||'')}" placeholder="Paquetes, otras duraciones, combos…"></div></div>
     <div class="modal-foot"><button class="btn btn-ghost" id="tdCancel">Cancelar</button><button class="btn btn-ink" id="tdSave">Guardar</button></div>`);
   $("#tdClose").onclick=closeModal; $("#tdCancel").onclick=closeModal;
   $("#tdSave").onclick=async()=>{ const name=$("#tfName").value.trim(); if(!name){ toast("Poné un nombre.",true); return; }
-    const obj={ id:t.id, category:$("#tfCat").value, name, desc:$("#tfDesc").value.trim(), duration:Number($("#tfDur").value)||45, price:$("#tfPrice").value.trim() };
+    const obj={ id:t.id, category:$("#tfCat").value, name, desc:$("#tfDesc").value.trim(), duration:Number($("#tfDur").value)||45, price:$("#tfPrice").value.trim(), priceNote:$("#tfNote").value.trim() };
     if(await saveDoc("treatments",obj)){ closeModal(); afterMutation(); toast("Guardado."); } };
 }
 function adminConfig(){ const c=S.config; const h=c.hours||{};
