@@ -365,7 +365,8 @@ const CATEGORIES=[
   { key:"fisioterapia", label:"Fisioterapia" },
   { key:"masajes", label:"Masajes" },
   { key:"estetica", label:"Estética corporal" },
-  { key:"facial", label:"Facial" }
+  { key:"facial", label:"Facial" },
+  { key:"nutricion", label:"Nutrición" }
 ];
 const CATLABEL=Object.fromEntries(CATEGORIES.map(c=>[c.key,c.label]));
 
@@ -376,9 +377,13 @@ const DEFAULTS={
     hours:{ 1:{open:"08:00",close:"19:00"},2:{open:"08:00",close:"19:00"},3:{open:"08:00",close:"19:00"},
       4:{open:"08:00",close:"19:00"},5:{open:"08:00",close:"19:00"},6:{open:"08:00",close:"12:00"},0:null } },
   professionals:[
-    { id:"p1", name:"Lic. Ana Giménez", role:"Fisioterapeuta · Kinesióloga", categories:["fisioterapia"], specialties:["Traumatológica","Deportiva"], bio:"Rehabilitación de lesiones, recuperación deportiva y vuelta segura al movimiento." },
-    { id:"p2", name:"Diego Martínez", role:"Masoterapeuta", categories:["masajes"], specialties:["Descontracturante","Relajante"], bio:"Masajes terapéuticos y de bienestar para aliviar tensiones y liberar el cuerpo." },
-    { id:"p3", name:"Carla Benítez", role:"Esteticista", categories:["estetica","facial"], specialties:["Estética corporal","Facial"], bio:"Tratamientos estéticos corporales y faciales no invasivos, con resultados visibles." }
+    { id:"dante", name:"Lic. Dante Delgado", role:"Fisioterapeuta · Kinesiólogo", categories:["fisioterapia","masajes"], specialties:["Deportiva","Traumatológica","Recovery","Entrenamiento"], bio:"Fisioterapia deportiva y traumatológica, recovery, cobertura deportiva y entrenamiento personalizado." },
+    { id:"sofia", name:"Lic. Sofía Delgado", role:"Nutricionista", categories:["nutricion"], specialties:["Plan de alimentación","Antropometría ISAK I"], bio:"Consultas y planes de alimentación personalizados, asesoría con seguimiento y mediciones antropométricas (certificación ISAK I)." },
+    { id:"facundo", name:"Facundo Douthat", role:"Masoterapeuta · Rehabilitación", categories:["masajes","fisioterapia","estetica"], specialties:["Masaje deportivo","Vendaje / tapping","Quiropraxia","Rehabilitación"], bio:"Masajes deportivos y descontracturantes, masoterapia, quiropraxia, vendajes y rehabilitación de lesiones." },
+    { id:"araceli", name:"Lic. Araceli Barrios", role:"Fisioterapeuta", categories:["fisioterapia","masajes","estetica"], specialties:["Deportiva","Reductores","Maderoterapia","Tapping"], bio:"Rehabilitación deportiva y traumatológica, masajes, tratamientos reductores, maderoterapia, drenaje y aparatología." },
+    { id:"amanda", name:"Amanda Huespe", role:"Fisioterapeuta", categories:["fisioterapia","masajes","estetica","facial"], specialties:["Deportiva","Reumatológica","Reductores","Reflexología"], bio:"Fisioterapia deportiva y reumatológica, masajes, recovery, reflexología podal, maderoterapia, aparatología y limpieza facial." },
+    { id:"dulce", name:"Lic. Dulce Jara", role:"Fisioterapeuta", categories:["fisioterapia","masajes"], specialties:["Traumatológica","Deportiva","Recovery","Ondas de choque"], bio:"Fisioterapia traumatológica y deportiva, recovery, vendajes funcionales, cobertura deportiva y ondas de choque." },
+    { id:"veronica", name:"Verónica Mora", role:"Fisioterapeuta", categories:["fisioterapia","masajes","estetica"], specialties:["Traumatológica","Geriátrica","A domicilio","Recovery"], bio:"Fisioterapia traumatológica y geriátrica, atención a domicilio, recovery, masajes, aparatología y ondas de choque." }
   ],
   treatments:[
     { id:"fis1", category:"fisioterapia", name:"Fisioterapia traumatológica", desc:"Tratamiento y recuperación de lesiones músculo-esqueléticas.", duration:45, price:"Gs. 130.000 / sesión", priceNote:"Paquetes: 5 ses. Gs. 600.000 · 10 ses. Gs. 1.000.000 · 15 ses. Gs. 1.300.000 · 20 ses. Gs. 1.700.000" },
@@ -401,7 +406,11 @@ const DEFAULTS={
     { id:"est9", category:"estetica", name:"Plan Reductor PRIME", desc:"Maderoterapia + masaje reductor + lipoláser en una misma sesión.", duration:60, price:"Gs. 280.000 / sesión", priceNote:"Pack 4 ses. Gs. 1.000.000 · Pack 6 ses. Gs. 1.440.000" },
     { id:"est10", category:"estetica", name:"Combinaciones reductoras", desc:"Combiná dos tratamientos en una misma sesión.", duration:60, price:"Desde Gs. 200.000", priceNote:"Reductor+Lipoláser o Madero+Lipoláser: Gs. 200.000 · Madero+Drenaje, Reductor+Drenaje o Drenaje+Lipoláser: Gs. 280.000" },
     { id:"fac1", category:"facial", name:"Limpieza facial profunda", desc:"Limpieza profunda para renovar y revitalizar tu piel.", duration:60, price:"" },
-    { id:"fac2", category:"facial", name:"Limpieza facial express", desc:"Limpieza rápida para mantener tu piel sana en poco tiempo.", duration:30, price:"" }
+    { id:"fac2", category:"facial", name:"Limpieza facial express", desc:"Limpieza rápida para mantener tu piel sana en poco tiempo.", duration:30, price:"" },
+    { id:"nut1", category:"nutricion", name:"Consulta nutricional", desc:"Evaluación nutricional en modalidad online o presencial.", duration:45, price:"" },
+    { id:"nut2", category:"nutricion", name:"Plan de alimentación", desc:"Plan personalizado con menú semanal y recetario.", duration:45, price:"" },
+    { id:"nut3", category:"nutricion", name:"Asesoría y seguimiento", desc:"Seguimiento nutricional continuo vía WhatsApp.", duration:30, price:"" },
+    { id:"nut4", category:"nutricion", name:"Mediciones antropométricas", desc:"Control de composición corporal con certificación ISAK I.", duration:30, price:"" }
   ]
 };
 const AVCOLORS=["#b0803a","#8c6224","#7a5a2a","#a06a2e","#946235","#6f5324"];
@@ -517,7 +526,8 @@ function catIcon(cat){ const map={
     fisioterapia:'<path d="M12 4a2 2 0 1 0 0-.001M8 21l1.5-6L7 13V9l4-1 3 2 3 1"/><path d="M9.5 15 8 21M14 13l1 8"/>',
     masajes:'<path d="M4 14c3-1 5-4 8-4s5 3 8 4"/><path d="M4 18c3-1 5-3 8-3s5 2 8 3"/><circle cx="12" cy="6" r="2"/>',
     estetica:'<path d="M12 3c2.5 4 5 6 5 10a5 5 0 1 1-10 0c0-4 2.5-6 5-10Z"/>',
-    facial:'<circle cx="12" cy="12" r="8"/><path d="M9 10h.01M15 10h.01M9 15c1 1 5 1 6 0"/>' };
+    facial:'<circle cx="12" cy="12" r="8"/><path d="M9 10h.01M15 10h.01M9 15c1 1 5 1 6 0"/>',
+    nutricion:'<path d="M5 21c0-8 6-14 14-14 0 8-6 14-14 14Z"/><path d="M5 21c3-6 7-9 11-11"/>' };
   return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${map[cat]||'<circle cx="12" cy="12" r="7"/>'}</svg>`; }
 const clockIcon=()=>`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
 
