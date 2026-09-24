@@ -180,6 +180,7 @@ footer .fine{border-top:1px solid rgba(255,255,255,.12);margin-top:32px;padding-
 .aslot .time{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;min-width:52px}
 .aslot .info{flex:1;min-width:0} .aslot .info b{color:var(--ink)} .aslot .info small{color:var(--muted);display:block}
 .src{font-size:.72rem;font-weight:700;padding:.2em .5em;border-radius:6px;background:var(--gold-soft);color:var(--gold-deep)}
+.bslot .src{font-size:.6rem;padding:.15em .4em;flex:none}
 .src.online{background:#e6eefc;color:#2b4c8c} .src.whatsapp{background:#dcf6e4;color:#12793f}
 :root[data-theme="dark"] .src.online,:root:not([data-theme="light"]) .src.online{background:#1c2c47;color:#a9c2f0}
 :root[data-theme="dark"] .src.whatsapp,:root:not([data-theme="light"]) .src.whatsapp{background:#123a24;color:#8fe0ab}
@@ -206,23 +207,25 @@ footer .fine{border-top:1px solid rgba(255,255,255,.12);margin-top:32px;padding-
 .board-stats{display:flex;gap:14px;font-size:.82rem;color:var(--muted)}
 .board-stats b{color:var(--ink);font-size:1rem}
 .board-body{flex:1;overflow:auto;padding:16px 18px}
-.board-cols{display:flex;gap:14px;min-height:100%;align-items:stretch}
-.board-col{flex:1 1 260px;min-width:250px;background:var(--paper);border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow)}
-.board-col .col-head{display:flex;align-items:center;gap:10px;padding:13px 14px;border-bottom:1px solid var(--line);background:var(--paper-2)}
-.board-col .col-head .avatar{width:38px;height:38px;font-size:.95rem}
-.board-col .col-head b{font-size:1rem;color:var(--ink)}
-.board-col .col-head small{color:var(--muted);font-size:.78rem;display:block}
-.board-col .col-count{margin-left:auto;font-size:.78rem;color:var(--gold-deep);font-weight:700}
-.col-body{padding:10px;display:flex;flex-direction:column;gap:6px;overflow:auto}
-.bslot{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:10px;border:1px solid var(--line);background:var(--paper)}
-.bslot .bt{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;min-width:46px;font-size:.9rem}
+.board-cols{display:grid;grid-template-columns:repeat(var(--board-cols,7),1fr);gap:8px;min-height:100%;align-items:stretch}
+@media(max-width:900px){.board-cols{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.board-cols{grid-template-columns:repeat(2,1fr)}}
+.board-col{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow)}
+.board-col .col-head{display:flex;align-items:center;gap:8px;padding:9px 10px;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.board-col .col-head .avatar{width:30px;height:30px;font-size:.78rem;flex:none}
+.board-col .col-head b{font-size:.82rem;color:var(--ink);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.board-col .col-head small{color:var(--muted);font-size:.68rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.board-col .col-count{margin-left:auto;font-size:.68rem;color:var(--gold-deep);font-weight:700;white-space:nowrap}
+.col-body{padding:6px;display:flex;flex-direction:column;gap:4px;overflow:auto}
+.bslot{display:flex;align-items:center;gap:6px;padding:6px 7px;border-radius:8px;border:1px solid var(--line);background:var(--paper);font-size:.8rem}
+.bslot .bt{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;min-width:36px;font-size:.78rem}
 .bslot.free{border-style:dashed;color:var(--muted);cursor:pointer}
 .bslot.free:hover{border-color:var(--gold);color:var(--gold-deep);background:color-mix(in srgb,var(--gold-soft) 40%, transparent)}
-.bslot.free .add{margin-left:auto;font-weight:600}
+.bslot.free .add{margin-left:auto;font-weight:600;font-size:.72rem}
 .bslot.busy{background:color-mix(in srgb,var(--gold-soft) 42%, transparent);border-color:var(--gold-line)}
 .bslot.busy .who{flex:1;min-width:0}
-.bslot.busy .who b{color:var(--ink);font-size:.92rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bslot.busy .who small{color:var(--muted);font-size:.76rem}
+.bslot.busy .who b{color:var(--ink);font-size:.78rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bslot.busy .who small{color:var(--muted);font-size:.66rem;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bslot.blocked{opacity:.6}
 .bslot .x{border:none;background:none;color:var(--danger);cursor:pointer;font-size:1rem;padding:2px 4px;border-radius:6px}
 .bslot .x:hover{background:color-mix(in srgb,var(--danger) 12%, transparent)}
@@ -728,6 +731,7 @@ function addApptDialog(proId,date,time){ const pro=proById(proId); const cats=pr
       <div class="field"><label>Nota (opcional)</label><textarea id="aaNote"></textarea></div></div>
     <div class="modal-foot"><button class="btn btn-ghost" id="aaCancel">Cancelar</button><button class="btn btn-ink" id="aaSave">Agendar turno</button></div>`);
   $("#aaClose").onclick=closeModal; $("#aaCancel").onclick=closeModal; setTimeout(()=>$("#aaName")?.focus(),50);
+  $$("#aaName, #aaPhone").forEach(inp=>inp.addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); $("#aaSave").click(); } }));
   $("#aaSave").onclick=async()=>{
     const name=$("#aaName").value.trim(); if(!name){ toast("Poné el nombre del paciente.",true); return; }
     if(!availableSlots(proId,date).includes(time)){ toast("Ese horario ya no está libre.",true); return; }
@@ -865,7 +869,7 @@ function renderBoard(){ const root=$("#boardRoot"); if(!BoardOpen){ root.innerHT
       <span class="board-clock" id="boardClock">${nowClock()}</span>
       <button class="icon-btn" id="bClose" aria-label="Cerrar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </div>
-    <div class="board-body"><div class="board-cols">${cols||'<div class="empty">No hay profesionales cargados.</div>'}</div></div></div>`;
+    <div class="board-body"><div class="board-cols" style="--board-cols:${Math.max(1,S.professionals.length)}">${cols||'<div class="empty">No hay profesionales cargados.</div>'}</div></div></div>`;
   $("#bPrev").onclick=()=>shiftBoardDate(-1); $("#bNext").onclick=()=>shiftBoardDate(1);
   $("#bToday").onclick=()=>{ BoardDate=todayStr(); renderBoard(); }; $("#bClose").onclick=closeBoard;
   $$("[data-badd]").forEach(b=>b.onclick=()=>{ const [pid,tm]=b.dataset.badd.split("|"); addApptDialog(pid,BoardDate,tm); });
